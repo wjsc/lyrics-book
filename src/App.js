@@ -6,7 +6,6 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      current: 2,
       lyrics: mockedLyrics
     };
   }
@@ -15,11 +14,19 @@ class App extends Component {
       current
     })
   }
+  changeText = (text) =>{
+    this.setState((prevState)=>{
+      let cloned=[...prevState.lyrics];
+      cloned[prevState.current].text=text;
+      return { lyrics: cloned }
+    })
+  }
   render() {
     return (
       <div className="app">
         <Sidebar data={this.state} onclick={this.changeCurrent}/>
-        <Viewer data={this.state.lyrics[this.state.current].text}/>
+        { this.state.lyrics[this.state.current]?
+          <Viewer  onchange={this.changeText} data={this.state.lyrics[this.state.current]}/>:''}
       </div>
     );
   }
@@ -28,14 +35,15 @@ class App extends Component {
 class Sidebar extends Component {
   render() {
     return (
-      <div className='sidebar'>
+      <ul className='sidebar'>
+        <li className="app-name">lyrics-book</li> 
         {this.props.data.lyrics
         .map((l, index)=>
           <Card key={index} 
           data={l} 
           onclick={()=>this.props.onclick(index)} 
           selected={this.props.data.current===index} />)}
-      </div>
+      </ul>
     )
   }
 }
@@ -49,10 +57,10 @@ class Card extends Component {
   }
   render() {
     return (
-      <div onClick={this.props.onclick} className={this.props.selected?'card selected':'card'}>
-        <div className='name'>{this.props.data.name}</div>
-        <div className='saved'>{this.props.data.saved}</div>
-      </div>
+      <li onClick={this.props.onclick} className={this.props.selected?'card selected':'card'}>
+        <span className='title'>{this.props.data.title}</span>
+        <span className='saved'>{this.props.data.saved}</span>
+      </li>
     )
   }
 }
@@ -65,12 +73,24 @@ class Viewer extends Component{
   render() {
     return (
       <div className='viewer'>
-        <Text data={this.props.data}/>
+        <h2 className='title'>{this.props.data.title}</h2>
+        <Toolbar />
+        <Text onchange={this.props.onchange} data={this.props.data.text}/>
       </div>
     )
   }
 }
 
+class Toolbar extends Component {
+  render(){
+    return (
+      <div className='toolbar'>
+
+
+      </div>
+    )
+  }
+}
 class Text extends Component{
   constructor(props){
     super(props);
@@ -78,9 +98,8 @@ class Text extends Component{
   }
   render() {
     return (
-      <div>
-        {this.props.data}
-      </div>
+      <textarea onChange={(e) => this.props.onchange(e.target.value)} className='text' value={this.props.data}>
+      </textarea>
     )
   }
 }
