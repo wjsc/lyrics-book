@@ -73,8 +73,8 @@ class Viewer extends Component{
   render() {
     return (
       <div className='viewer'>
-        <h2 className='title'>{this.props.data.title}</h2>
         <Toolbar />
+        <h2 className='title'>{this.props.data.title}</h2>
         <Text onchange={this.props.onchange} data={this.props.data.text}/>
       </div>
     )
