@@ -14,15 +14,27 @@ body {
   height: 100vh;
 }
 
+.app .action {
+  display: inline;
+  font-size: 0.8em;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.app .action:hover {
+  color: red;
+}
+
+
 .app .sidebar {
   display: inline-flex;
-  flex-grow: 1;
   order:1;
   flex-direction: column;
   list-style: none;
+  min-width: 2em;
 }
 .app .sidebar li{
-  padding: 10px 0px 10px 10px;
+  padding: 10px 20px 10px 10px;
 }
 .app .sidebar .app-name {
   text-transform: uppercase;
@@ -48,22 +60,10 @@ body {
   display: block;
 }
 
-
 .app .sidebar .card .date {
   color: #5f5f5f;
   display: block;
   font-size: 0.8em;
-}
-
-.app .sidebar .action {
-  display: inline;
-  font-size: 0.8em;
-  margin-right: 5px;
-  cursor: pointer;
-}
-
-.app .sidebar .action:hover {
-  color: red;
 }
 
 .app .viewer {
