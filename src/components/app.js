@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Sidebar data={this.state} onclick={this.changeCurrent}/>
+        <Sidebar updateLyricsHandler={this.updateLyrics} data={this.state} onclick={this.changeCurrent}/>
         { this.state.lyrics[this.state.current]?
           <Viewer  onchangeTitle={this.changeTitle} onchangeText={this.changeText} data={this.state.lyrics[this.state.current]}/>:""}
       </div>

@@ -15,7 +15,7 @@ class Card extends Component {
     return lyricsServerCalls.update({[this.props.id] : this.props.lyric});
   }
   removeLyric(){
-    return lyricsServerCalls.remove(this.props.id);
+    return lyricsServerCalls.remove(this.props.id) && this.props.updateLyricsHandler();
   }
   changeHover(bool){
     this.props.selected && this.setState({hover: bool});

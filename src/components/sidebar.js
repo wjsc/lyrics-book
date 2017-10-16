@@ -14,7 +14,7 @@ class Sidebar extends Component {
     return lyricsServerCalls.insert({
       date: new Date().toJSON,
       title: 'Untitled'
-    })
+    }) && this.props.updateLyricsHandler()
   }
   toggleCollapse= () => {
     this.setState(prevState => ({collapse: !prevState.collapse}))
@@ -30,6 +30,7 @@ class Sidebar extends Component {
         Object.keys(this.props.data.lyrics)
         .map((id)=>
           <Card key={id} id={id}
+          updateLyricsHandler={this.props.updateLyricsHandler}
           lyric={this.props.data.lyrics[id]} 
           onclick={()=>this.props.onclick(id)} 
           selected={this.props.data.current===id} />)}
