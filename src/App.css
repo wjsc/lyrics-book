@@ -20,10 +20,15 @@ body {
   order:1;
   flex-direction: column;
   list-style: none;
+  border-right: 1px solid grey;
 }
 
 .app .sidebar .app-name {
   font-size: 2em;
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: orange;
 }
 
 .app .sidebar .card {
@@ -37,7 +42,6 @@ body {
   border-bottom: 1px solid grey;
 }
 .app .sidebar .card:hover {
-  background-color: yellow;
 }
 
 .app .sidebar .selected{
@@ -49,17 +53,16 @@ body {
 }
 
 
-.app .sidebar .card .saved {
+.app .sidebar .card .date {
   color: #282828;
   display: block;
   font-size: 0.8em;
 }
 
 .app .viewer {
-  /* display: inline-flex; */
   flex-grow: 5;
   order:2;
-  border-left: 3px solid orange;
+  padding-left: 25px;
 }
 .app .viewer .toolbar {
   display: block;
@@ -70,6 +73,10 @@ body {
   height: 5vh;
   font-size: 1.5em;
   margin: 0;
+  background-color: transparent;
+  color: white;
+  border: none;
+  width: -webkit-fill-available;
 }
 .app .viewer .text {
   height: 90vh;
