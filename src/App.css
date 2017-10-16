@@ -55,13 +55,14 @@ body {
   font-size: 0.8em;
 }
 
-.app .sidebar .card .action {
+.app .sidebar .action {
   display: inline;
   font-size: 0.8em;
   margin-right: 5px;
+  cursor: pointer;
 }
 
-.app .sidebar .card .action:hover {
+.app .sidebar .action:hover {
   color: red;
 }
 

@@ -18,7 +18,7 @@ class Card extends Component {
     return lyricsServerCalls.remove(this.props.id);
   }
   changeHover(bool){
-    this.setState({hover: bool});
+    this.props.selected && this.setState({hover: bool});
   }
   renderHover(){
     return (

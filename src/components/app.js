@@ -7,7 +7,11 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={ lyrics: [] };
-    lyricsServerCalls.get().then(obj => this.setState({lyrics: obj}))
+    this.updateLyrics = this.updateLyrics.bind(this);
+    this.updateLyrics();
+  }
+  updateLyrics = () => {
+    return lyricsServerCalls.get().then(obj => this.setState({lyrics: obj}))
   }
   changeCurrent = (current)=>{
     this.setState({current});
