@@ -13,7 +13,8 @@ class Sidebar extends Component {
   insertLyric = () => {
     return lyricsServerCalls.insert({
       date: new Date().toJSON,
-      title: 'Untitled'
+      title: 'Untitled',
+      text: ''
     }) && this.props.updateLyricsHandler()
   }
   toggleCollapse= () => {
