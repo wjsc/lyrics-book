@@ -1,26 +1,15 @@
 import React, { Component } from "react";
 import Sidebar from './sidebar';
 import Viewer from './viewer';
-const lyricsEndpoint="http://localhost:3000/lyrics";
+import lyricsServerCalls from '../lyricsServerCalls';
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={
-      lyrics: []
-    };
-
-    fetch(lyricsEndpoint).then(res => res.json()).then(obj => this.setState({lyrics: obj}))
-  }
-  saveToDatabase = (id, lyric) => {
-    return fetch(lyricsEndpoint+"/"+id, { 
-      method: "PUT", 
-      headers: new Headers({"Content-Type":"application/json"}), 
-      body: JSON.stringify(lyric)
-    });
+    this.state={ lyrics: [] };
+    lyricsServerCalls.get().then(obj => this.setState({lyrics: obj}))
   }
   changeCurrent = (current)=>{
-    if(this.state.current) this.saveToDatabase(this.state.current, this.state.lyrics[this.state.current]);
     this.setState({current});
   }
   changeText = (text) => {
