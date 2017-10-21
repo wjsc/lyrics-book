@@ -9,78 +9,92 @@ body {
   color: #a0a0a0;
 }
 
-.app {
+.app .login_logout {
+  padding: 10px;
+  border: none;
+  background-color: #1d1d1d;
+  position: absolute;
+  top:0;
+  right: 0;
+  color: #a0a0a0;
+  cursor: pointer;
+}
+
+.sidebar_viewer {
   display: flex;
   height: 100vh;
 }
 
-.app .action {
+.sidebar_viewer .action {
   display: inline;
   font-size: 0.8em;
   margin-right: 5px;
   cursor: pointer;
 }
 
-.app .action:hover {
+.sidebar_viewer .action:hover {
   color: red;
 }
 
+.sidebar_viewer .login_logout:hover {
+  color: red;
+}
 
-.app .sidebar {
+.sidebar_viewer .sidebar {
   display: inline-flex;
   order:1;
   flex-direction: column;
   list-style: none;
   min-width: 2em;
 }
-.app .sidebar li{
+.sidebar_viewer .sidebar li{
   padding: 10px 20px 10px 10px;
 }
-.app .sidebar .app-name {
+.sidebar_viewer .sidebar .sidebar_viewer-name {
   text-transform: uppercase;
   color: #1b2527;
 }
 
-.app .sidebar .cards{
+.sidebar_viewer .sidebar .cards{
     user-select: none;
 }
-.app .sidebar .card {
+.sidebar_viewer .sidebar .card {
   display: block;
   cursor: pointer;
 }
 
-/* .app .sidebar .card:nth-last-child(1){
+/* .sidebar_viewer .sidebar .card:nth-last-child(1){
 } */
-.app .sidebar .card:hover {
+.sidebar_viewer .sidebar .card:hover {
   background-color:#1b2527;
 }
 
-.app .sidebar .selected{
+.sidebar_viewer .sidebar .selected{
   background-color:#1b2527;
 }
 
-.app .sidebar .card .title {
+.sidebar_viewer .sidebar .card .title {
   display: block;
 }
 
-.app .sidebar .card .date {
+.sidebar_viewer .sidebar .card .date {
   color: #5f5f5f;
   display: block;
   font-size: 0.8em;
 }
 
-.app .viewer {
+.sidebar_viewer .viewer {
   flex-grow: 10;
   order:2;
   padding-left: 25px;
   background-color: #1d1d1d;
 }
-.app .viewer .toolbar {
+.sidebar_viewer .viewer .toolbar {
   display: block;
   /* height: 5vh; */
 }
 
-.app .viewer .title {
+.sidebar_viewer .viewer .title {
   height: 5vh;
   font-size: 1.5em;
   margin: 0;
@@ -93,7 +107,7 @@ body {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.app .viewer .text {
+.sidebar_viewer .viewer .text {
   height: 90vh;
   display: block;
   border: none;

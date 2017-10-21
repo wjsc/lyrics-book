@@ -24,7 +24,7 @@ class Login extends Component {
   render(){
     return (
       <div>
-        {  this.props.user ? <button onClick={this.logout}>Log Out</button> : <button onClick={this.login}>Log In</button> }
+        {  this.props.user ? <button className="login_logout" onClick={this.logout}>Log Out</button> : <button className="login_logout" onClick={this.login}>Log In</button> }
       </div>
     )
   }

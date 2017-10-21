@@ -62,12 +62,14 @@ class App extends Component {
   }
   render() {
     return (
-      
         <div className="app">
           <Login setUser={this.setUser} user={this.state.user}/>
-          { this.state.user && <Sidebar insertLyricsHandler={this.insertLyric} updateLyricsHandler={this.updateLyric} removeLyricsHandler={this.removeLyric} data={this.state} onclick={this.changeCurrent}/> } 
-          { this.state.user && this.state.lyrics[this.state.current] && <Viewer  onchangeTitle={this.changeTitle} onchangeText={this.changeText} data={this.state.lyrics[this.state.current]}/> }
+          <div className="sidebar_viewer">
+            { this.state.user && <Sidebar insertLyricsHandler={this.insertLyric} updateLyricsHandler={this.updateLyric} removeLyricsHandler={this.removeLyric} data={this.state} onclick={this.changeCurrent}/> } 
+            { this.state.user && this.state.lyrics[this.state.current] && <Viewer  onchangeTitle={this.changeTitle} onchangeText={this.changeText} data={this.state.lyrics[this.state.current]}/> }
+          </div>
         </div>
+
     );
   }
 }
