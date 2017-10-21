@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from './card';
-import lyricsServerCalls from '../lyricsServerCalls';
 
 class Sidebar extends Component {
   constructor(props){
@@ -8,14 +7,6 @@ class Sidebar extends Component {
     this.state = { collapse: false};
 
     this.toggleCollapse = this.toggleCollapse.bind(this);
-    this.insertLyric = this.insertLyric.bind(this);
-  }
-  insertLyric = () => {
-    return lyricsServerCalls.insert({
-      date: new Date().toJSON,
-      title: 'Untitled',
-      text: ''
-    }) && this.props.updateLyricsHandler()
   }
   toggleCollapse= () => {
     this.setState(prevState => ({collapse: !prevState.collapse}))
@@ -25,13 +16,14 @@ class Sidebar extends Component {
       <ul className="sidebar" onDoubleClick={this.toggleCollapse}>
       <div className="cards" style={{display: this.state.collapse && 'none'}}>
         <li>
-            <span onClick={this.insertLyric} className="action">New</span>
+            <span onClick={this.props.insertLyricsHandler} className="action">New</span>
         </li>
         {
         Object.keys(this.props.data.lyrics)
         .map((id)=>
           <Card key={id} id={id}
           updateLyricsHandler={this.props.updateLyricsHandler}
+          removeLyricsHandler={this.props.removeLyricsHandler}
           lyric={this.props.data.lyrics[id]} 
           onclick={()=>this.props.onclick(id)} 
           selected={this.props.data.current===id} />)}

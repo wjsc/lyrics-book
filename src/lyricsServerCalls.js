@@ -1,17 +1,36 @@
-const lyricsEndpoint="http://localhost:3000/lyrics";
+const lyricsEndpoint="http://192.168.1.8:3000/lyrics";
+
+let uid;
+
+const setUid = (x) => {
+  uid=x;
+}
+
+const buildHeaders = () => {
+    return new Headers({
+    "Content-Type":"application/json",
+    "Authorization": 'Basic '+uid
+  })
+};
 
 const get = () => {
-  return fetch(lyricsEndpoint).then(res => res.json());
+  return fetch(lyricsEndpoint,{
+    method: "GET", 
+    headers: buildHeaders()
+  }).then(res => res.json());
 }
 
 const getById = (id) => {
-  return fetch(lyricsEndpoint+'/'+id).then(res => res.json());
+  return fetch(lyricsEndpoint+'/'+id,{
+    method: "GET", 
+    headers: buildHeaders()
+  }).then(res => res.json());
 }
 
 const insert = (lyric) => {
   return fetch(lyricsEndpoint, {
     method: "POST", 
-    headers: new Headers({"Content-Type":"application/json"}), 
+    headers: buildHeaders(),
     body: JSON.stringify(lyric)
   });
 }
@@ -20,14 +39,15 @@ const update = (lyric) => {
   let id = Object.keys(lyric)[0];
   return fetch(lyricsEndpoint+"/"+id, {
     method: "PUT", 
-    headers: new Headers({"Content-Type":"application/json"}), 
+    headers: buildHeaders(), 
     body: JSON.stringify(lyric[id])
   });
 }
 
 const remove = (id) => {
   return fetch(lyricsEndpoint+"/"+id, {
-    method: "DELETE"
+    method: "DELETE",
+    headers: buildHeaders()
   });
 }
-module.exports = {get, getById, insert, update, remove};
+module.exports = {setUid, get, getById, insert, update, remove};

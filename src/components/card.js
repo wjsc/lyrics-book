@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import lyricsServerCalls from '../lyricsServerCalls';
 
 class Card extends Component {
   constructor(props){
@@ -8,14 +7,7 @@ class Card extends Component {
       selected: false,
       hover: false
     }
-    this.updateLyric = this.updateLyric.bind(this);
-    this.removeLyric = this.removeLyric.bind(this);
-  }
-  updateLyric(){
-    return lyricsServerCalls.update({[this.props.id] : this.props.lyric});
-  }
-  removeLyric(){
-    return lyricsServerCalls.remove(this.props.id) && this.props.updateLyricsHandler();
+    
   }
   changeHover(bool){
     this.props.selected && this.setState({hover: bool});
@@ -23,8 +15,8 @@ class Card extends Component {
   renderHover(){
     return (
         <span>
-          <p className="action" onClick={this.updateLyric}>Save</p>
-          <p className="action" onClick={this.removeLyric}>Delete</p>
+          <p className="action" onClick={() => this.props.updateLyricsHandler(this.props.id, this.props.lyric)}>Save</p>
+          <p className="action" onClick={() => this.props.removeLyricsHandler(this.props.id)}>Delete</p>
         </span>
     )
   }

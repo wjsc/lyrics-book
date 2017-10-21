@@ -41,6 +41,9 @@ body {
   color: #1b2527;
 }
 
+.app .sidebar .cards{
+    user-select: none;
+}
 .app .sidebar .card {
   display: block;
   cursor: pointer;

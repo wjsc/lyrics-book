@@ -5,6 +5,7 @@
   "author": "wjsc",
   "git-repository": "https://github.com/wjsc/lyrics-book",
   "dependencies": {
+    "firebase": "^4.5.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14"
