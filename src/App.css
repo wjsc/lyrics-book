@@ -9,10 +9,28 @@ body {
   color: #a0a0a0;
 }
 
-.app .login_logout {
+.app .login_container{
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;  
+}
+
+.app .login_container .login{
   padding: 10px;
   border: none;
-  background-color: #1d1d1d;
+  background-color: transparent;
+  color: #a0a0a0;
+  cursor: pointer;
+  transform: translate(-50%,0%);
+  position: absolute;
+  left: 50%;
+}
+
+.app .logout{
+  padding: 10px;
+  border: none;
+  background-color: transparent;
   position: absolute;
   top:0;
   right: 0;
@@ -106,6 +124,7 @@ body {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  width: -webkit-fill-available;
 }
 .sidebar_viewer .viewer .text {
   height: 90vh;

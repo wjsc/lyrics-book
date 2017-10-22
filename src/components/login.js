@@ -21,12 +21,19 @@ class Login extends Component {
   login() {
     auth.signInWithRedirect(provider);
   }
-  render(){
+  renderLogin(){
     return (
-      <div>
-        {  this.props.user ? <button className="login_logout" onClick={this.logout}>Log Out</button> : <button className="login_logout" onClick={this.login}>Log In</button> }
+      <div className="login_container">
+        <h1>A Book full of Lyrics</h1>
+        <button className="login" onClick={this.login}>Login</button>
       </div>
-    )
+    );
+  }
+  renderLogout(){
+    return <button className="logout" onClick={this.logout}>Logout</button>;
+  }
+  render(){
+    return this.props.user ?  this.renderLogout() : this.renderLogin();
   }
 }
 
