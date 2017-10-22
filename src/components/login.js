@@ -24,7 +24,7 @@ class Login extends Component {
   renderLogin(){
     return (
       <div className="login_container">
-        <h1>A Book full of Lyrics</h1>
+        <h1>A Book Full of Lyrics</h1>
         <button className="login" onClick={this.login}>Login</button>
       </div>
     );

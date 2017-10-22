@@ -15,9 +15,9 @@ class Card extends Component {
   renderHover(){
     return (
         <div className="actions">
-          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.updateLyricsHandler(this.props.id, this.props.lyric)}>Save</span>
-          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.removeLyricsHandler(this.props.id)}>Delete</span>
-          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.closeLyricsHandler()}>Close</span>
+          <span className="action" onClick={ev => ev.stopPropagation() & this.props.updateLyricsHandler(this.props.id, this.props.lyric)}>Save</span>
+          <span className="action" onClick={ev => ev.stopPropagation() & this.props.removeLyricsHandler(this.props.id)}>Delete</span>
+          <span className="action" onClick={ev => ev.stopPropagation() & this.props.closeLyricsHandler()}>Close</span>
         </div>
     )
   }
@@ -30,7 +30,7 @@ class Card extends Component {
   }
   render(){
     return (
-      <div onMouseEnter={() => this.changeHover(true)} onMouseLeave={() => this.changeHover(false)}>
+      <div onDoubleClick={ev => ev.stopPropagation()} onMouseEnter={() => this.changeHover(true)} onMouseLeave={() => this.changeHover(false)}>
         <li onClick={this.props.onclick} className={this.props.selected?"card selected":"card"}>
           <span className="title">{this.props.lyric.title}</span>
           {this.state.hover ? this.renderHover() : this.renderNoHover()}
