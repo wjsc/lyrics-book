@@ -8,13 +8,16 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={ 
-      user: null,  
+      user: null,
+      current: null,
       lyrics: [] 
     };
     this.setUser = this.setUser.bind(this);
     this.getLyrics = this.getLyrics.bind(this);
     this.updateLyric = this.updateLyric.bind(this);
     this.removeLyric = this.removeLyric.bind(this);
+    this.closeLyric = this.closeLyric.bind(this);
+    this.changeCurrent = this.changeCurrent.bind(this);
   }
   setUser = (user) => {
     this.setState({user: user});
@@ -34,13 +37,17 @@ class App extends Component {
       text: ''
     }) && this.getLyrics()
   }
-  updateLyric(id, lyric){
+  updateLyric = (id, lyric) => {
     return lyricsServerCalls.update({[id] : lyric});
   }
-  removeLyric(id){
+  removeLyric = (id) => {
     return lyricsServerCalls.remove(id) && this.getLyrics();
   }
+  closeLyric = () => {
+    this.changeCurrent(null);
+  }
   changeCurrent = (current)=>{
+    console.log('current: '+current);
     this.setState({current});
   }
   changeText = (text) => {
@@ -54,7 +61,6 @@ class App extends Component {
   }
   changeTitle = (title) => {
     this.setState((prevState)=>{
-      console.log("TODO: Update only current key!");
       let cloned=Object.assign({},prevState.lyrics);
       cloned[prevState.current].title=title;
       return { lyrics: cloned }
@@ -65,8 +71,16 @@ class App extends Component {
         <div className="app">
           <Login setUser={this.setUser} user={this.state.user}/>
           <div className="sidebar_viewer">
-            { this.state.user && <Sidebar insertLyricsHandler={this.insertLyric} updateLyricsHandler={this.updateLyric} removeLyricsHandler={this.removeLyric} data={this.state} onclick={this.changeCurrent}/> } 
-            { this.state.user && this.state.lyrics[this.state.current] && <Viewer  onchangeTitle={this.changeTitle} onchangeText={this.changeText} data={this.state.lyrics[this.state.current]}/> }
+            { this.state.user && 
+                <Sidebar 
+                insertLyricsHandler={this.insertLyric} 
+                updateLyricsHandler={this.updateLyric} 
+                removeLyricsHandler={this.removeLyric}
+                closeLyricsHandler={this.closeLyric}
+                data={this.state} 
+                onclick={this.changeCurrent}/> } 
+            { this.state.user && this.state.lyrics[this.state.current] 
+              && <Viewer  onchangeTitle={this.changeTitle} onchangeText={this.changeText} data={this.state.lyrics[this.state.current]}/> }
           </div>
         </div>
 

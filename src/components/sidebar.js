@@ -24,6 +24,7 @@ class Sidebar extends Component {
           <Card key={id} id={id}
           updateLyricsHandler={this.props.updateLyricsHandler}
           removeLyricsHandler={this.props.removeLyricsHandler}
+          closeLyricsHandler={this.props.closeLyricsHandler}
           lyric={this.props.data.lyrics[id]} 
           onclick={()=>this.props.onclick(id)} 
           selected={this.props.data.current===id} />)}

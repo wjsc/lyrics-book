@@ -14,17 +14,18 @@ class Card extends Component {
   }
   renderHover(){
     return (
-        <span>
-          <p className="action" onClick={() => this.props.updateLyricsHandler(this.props.id, this.props.lyric)}>Save</p>
-          <p className="action" onClick={() => this.props.removeLyricsHandler(this.props.id)}>Delete</p>
-        </span>
+        <div className="actions">
+          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.updateLyricsHandler(this.props.id, this.props.lyric)}>Save</span>
+          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.removeLyricsHandler(this.props.id)}>Delete</span>
+          <span className="action" onClick={(ev) => ev.stopPropagation() & this.props.closeLyricsHandler()}>Close</span>
+        </div>
     )
   }
   renderNoHover() {
     return (
-      <span>
-        <p className="date">{this.props.lyric.date}</p>
-      </span>
+      <div>
+        <span className="date">{this.props.lyric.date}</span>
+      </div>
     )
   }
   render(){
