@@ -1,4 +1,4 @@
-const lyricsEndpoint="http://192.168.1.8:3000/lyrics";
+const lyricsEndpoint="https://mighty-mesa-72816.herokuapp.com/lyrics";
 
 let uid;
 
