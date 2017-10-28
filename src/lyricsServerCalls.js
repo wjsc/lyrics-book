@@ -1,4 +1,4 @@
-const lyricsEndpoint="http://192.168.1.8:3000/lyrics";
+const lyricsEndpoint=process.env.SERVER_ENDPOINT;
 
 let uid;
 
