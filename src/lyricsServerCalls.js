@@ -1,4 +1,4 @@
-const lyricsEndpoint=process.env.SERVER_ENDPOINT;
+const lyricsEndpoint=process.env.REACT_APP_SERVER;
 
 let uid;
 
